@@ -25,7 +25,7 @@ const About = () => {
         <div className="absolute inset-0 bg-black/50" />
         <div className="container relative z-10 h-full flex items-center justify-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
-            Over MBO-Hub Amsterdam
+            Over MBO-HUB Amsterdam
           </h1>
         </div>
       </div>
