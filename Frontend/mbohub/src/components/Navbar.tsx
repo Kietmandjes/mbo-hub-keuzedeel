@@ -25,7 +25,7 @@ export const Navbar = () => {
           <Link to="/" className="text-2xl font-bold text-primary flex items-center gap-2">
             <img src="https://mbo-hub.amsterdam/images/mbo-hub-logo.png" alt="MBO-Hub Logo" className="h-10 w-30" />
           </Link>
-          
+
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link 
@@ -43,13 +43,7 @@ export const Navbar = () => {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center">
-            <Button variant="secondary" asChild>
-              <Link to="/login">
-                Login
-              </Link>
-            </Button>
-          </div>
+
         </div>
       </div>
     </nav>

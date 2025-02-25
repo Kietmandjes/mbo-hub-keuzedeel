@@ -2,7 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\ProjectController;
+use Illuminate\Auth\Events\Login;
+use App\Http\Controllers\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,11 +17,11 @@ use App\Http\Controllers\TestController;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/login',[LoginController::class,'login']);
+Route::post('/register',[LoginController::class,'register']);
+
+Route::match(['get', 'post'], '/user', function (Request $request) {
+    // Your logic here
+    return ['Laravel' => app()->version(),$request->all()]; 
 });
-// Route::match(['get', 'post'], '/home', function (Request $request) {
-//     // Your logic here
-//     return ['Laravel' => app()->version(),$request->all()]; 
-// });
-Route::post("/home", [TestController::class, "index"]);
+Route::post("/home", [ProjectController::class, "index"]);

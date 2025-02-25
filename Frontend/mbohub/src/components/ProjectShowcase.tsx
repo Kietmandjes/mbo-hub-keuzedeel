@@ -17,9 +17,21 @@ export const ProjectShowcase = ({ limit }: ProjectShowcaseProps) => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/projects');
-        if (Array.isArray(response.data)) {
-          setProjects(limit ? response.data.slice(0, limit) : response.data);
+        const response = await fetch('http://localhost:8000/api/home', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          setProjects(limit ? data.slice(0, limit) : data);
         } else {
           throw new Error('Invalid data format received from API');
         }
@@ -82,7 +94,7 @@ export const ProjectShowcase = ({ limit }: ProjectShowcaseProps) => {
               </div>
               <div className="p-6">
                 <Badge className="mb-2 bg-secondary text-white">
-                  {project.tag}
+                  {project.date}
                 </Badge>
                 <h3 className="text-xl font-semibold mb-2 text-primary">
                   {project.title}
