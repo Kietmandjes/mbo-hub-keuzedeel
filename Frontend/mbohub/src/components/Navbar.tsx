@@ -12,7 +12,7 @@ export const Navbar = () => {
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/projects", label: "Projecten" },
-    { path: "/news", label: "Nieuws" },
+    // { path: "/news", label: "Nieuws" },
     { path: "/calendar", label: "Kalender" },
     { path: "/about", label: "Over Ons" },
     { path: "/contact", label: "Contact" },
