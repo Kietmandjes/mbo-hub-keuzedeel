@@ -1,5 +1,6 @@
 import { ProjectShowcase } from "@/components/ProjectShowcase";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input"; 
 import { Link } from "react-router-dom";
 const Projects = () => {
   return (
@@ -40,16 +41,16 @@ const Projects = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              variant="secondary"
+              // variant="secondary"
               asChild
-              className="hover:bg-secondary-dark text-white font-semibold"
+              className="bg-secondary hover:bg-secondary-dark text-white font-semibold"
             >
               <Link to="/contact?type=business">Project Aanmelden als Bedrijf</Link>
             </Button>
             <Button 
-              variant="outline"
+              // variant="outline"
               asChild
-              className="hover:bg-accent hover:text-white font-semibold"
+              className="bg-accent hover:bg-accent-dark text-white font-semibold"
             >
               <Link to="/contact?type=student">Aanmelden als Student</Link>
             </Button>
@@ -57,7 +58,7 @@ const Projects = () => {
         </div>
       </section>
       <form
-            className={ "flex flex-col max-w-3xl mx-auto p-4 gap-2" }
+            className={ "flex flex-col max-w-3xl mx-auto p-4 gap-2 " }
             onSubmit={ async ( e ) => {
               e.preventDefault();
               const formData = new FormData( e.target as HTMLFormElement );
@@ -103,11 +104,46 @@ const Projects = () => {
               }
             } }
         >
-          <input className={ "border border-black" } type="text" name={ "title" } placeholder={ "title" } />
+          <div>
+                <Input
+                  type="text"
+                  placeholder="Title"
+                  name="title"
+                  required
+                />
+              </div>
+              <div>
+                <Input
+                  type="text"
+                  placeholder="description"
+                  name="description"
+                  required
+                />
+              </div>
+              <div>
+                <Input
+                  type="file"
+                  placeholder="image"
+                  name="image"
+                  required/>
+              </div>
+              <div>
+                <Input
+                  type="text"
+                  placeholder="tag"
+                  name="tag"
+                  required
+                />
+              </div>
+              <div>
+              <Button type="submit" className="w-full text-white">Verstuur bericht</Button>
+              </div>
+              
+          {/* <input className={ "border border-black" } type="text" name={ "title" } placeholder={ "title" } />
           <input className={ "border border-black" } type="text" name={ "description" } placeholder={ "description" } />
           <input className={ "border border-black" } type="file" name={ "image" } placeholder={ "image" } />
           <input className={ "border border-black" } type="text" name={ "tag" } placeholder={ "tag" } />
-          <button className={ "border border-black" } type="submit">Submit</button>
+          <button className={ "border border-black" } type="submit">Submit</button> */}
         </form>
     </div>
   );

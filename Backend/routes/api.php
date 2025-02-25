@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::match(['get', 'post'], '/home', function (Request $request) {
+    // Your logic here
+    return ['Laravel' => app()->version()];
+});
