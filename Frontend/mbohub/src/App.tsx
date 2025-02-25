@@ -13,6 +13,7 @@ import Skills from "./pages/Skills";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
+import Login from "./pages/Login";  
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,9 @@ const App = () => (
               <Route path="/news" element={<News />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/login" element={<Login />} />
+               {/* 404 page*/}
+              <Route path="*" element={<div className="w-full h-screen flex justify-center items-center font-bold text-xl">404 Page Not Found</div>} />
             </Routes>
           </main>
           <Footer />

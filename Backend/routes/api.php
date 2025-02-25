@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectController;
+use Illuminate\Auth\Events\Login;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::match(['get', 'post'], '/home', function (Request $request) {
+Route::post('/login',[LoginController::class,'login']);
+Route::post('/register',[LoginController::class,'register']);
+
+Route::match(['get', 'post'], '/user', function (Request $request) {
     // Your logic here
-    return ['Laravel' => app()->version()];
+    return ['Laravel' => app()->version(),$request->all()]; 
 });
+
+Route::post("/home", [ProjectController::class, "index"]);
+
