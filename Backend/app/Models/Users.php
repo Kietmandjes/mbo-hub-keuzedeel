@@ -1,8 +1,8 @@
 <?php
-
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
-class test extends Model
+class Users extends Model
 {
-    protected $table = 'reacties';
+    protected $table = 'users';
 }

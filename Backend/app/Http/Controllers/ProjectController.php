@@ -1,13 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;    
-use App\Models\test;    
+use App\Models\Projects;    
 
-class TestController extends Controller
+class ProjectController extends Controller
 {
     public function index()
     {
-        $data = test::all();
+        $data = Projects::all();
         return response()->json($data);
     }
 }
