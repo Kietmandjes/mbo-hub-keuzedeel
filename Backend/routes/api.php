@@ -24,4 +24,6 @@ Route::match(['get', 'post'], '/user', function (Request $request) {
     // Your logic here
     return ['Laravel' => app()->version(),$request->all()]; 
 });
+
 Route::post("/home", [ProjectController::class, "index"]);
+
