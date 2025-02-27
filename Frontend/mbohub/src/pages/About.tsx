@@ -52,7 +52,7 @@ const About = () => {
               <Card key={member.name} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
                   <Avatar className="w-24 h-24 mx-auto mb-4">
-                    <AvatarImage src={member.image} alt={member.name} />
+                    <AvatarImage className="object-cover" src={member.image} alt={member.name} />
                     <AvatarFallback>{member.initials}</AvatarFallback>
                   </Avatar>
                   <h3 className="text-xl font-semibold text-primary">{member.name}</h3>

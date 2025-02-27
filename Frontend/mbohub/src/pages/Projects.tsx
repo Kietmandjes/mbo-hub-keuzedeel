@@ -6,15 +6,8 @@ const Projects = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative h-[40vh] bg-primary overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src=""
-            alt="Projects Header"
-            className="w-full h-full object-cover opacity-30"
-          />
-        </div>
-        <div className="relative container mx-auto px-4 h-full flex items-center">
+      <section className="h-[40vh] bg-primary overflow-hidden">
+        <div className="container mx-auto px-4 h-full flex items-center">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in">
               Onze Projecten

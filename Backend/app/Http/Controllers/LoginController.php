@@ -20,7 +20,7 @@ class LoginController extends Controller
         }
         if (Hash::check($password, $user['password'])) {
             // The passwords match...
-            return response()->json([$user,'status'=>"success"],200);
+            return response()->json(['status'=>"success"],200);
         }else{
             return response()->json(['message' => 'Password not match','status'=> 'password'], 404);
         }
