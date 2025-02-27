@@ -18,6 +18,29 @@ const About = () => {
     // Add more team members as needed
   ];
 
+  const developTeam = [
+    {
+      name: "Igor Herrebrugh",
+      role: "Developer",
+      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      initials: "IH"
+    },
+    {
+      name: "Kiet Mandjes",
+      role: "Developer",
+      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
+      initials: "KM"
+    },
+    {
+      name: "Bilal el Koudadi",
+      role: "Developer",
+      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
+      initials: "BK"
+    },
+    // Add more team members as needed
+  ];
+
+  
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -47,7 +70,7 @@ const About = () => {
           <h2 className="text-3xl font-bold text-primary text-center mb-12">
             Ontmoet ons Team
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {teamMembers.map((member) => (
               <Card key={member.name} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
