@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\projectsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,4 +21,4 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 //     // Your logic here
 //     return ['Laravel' => app()->version(),$request->all()]; 
 // });
-Route::post("/home", [TestController::class, "index"]);
+Route::post("/home", [projectsController::class, "index"]);

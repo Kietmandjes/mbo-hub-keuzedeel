@@ -2,7 +2,7 @@
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
-class test extends Model
+class projects extends Model
 {
-    protected $table = 'reacties';
+    protected $table = 'projects';
 }
