@@ -196,7 +196,7 @@ const Admin = () => {
                   />
                 </div>
 
-                <Button type="submit">Evenement Toevoegen</Button>
+                <Button variant="default" type="submit">Evenement Toevoegen</Button>
               </form>
             </CardContent>
           </Card>

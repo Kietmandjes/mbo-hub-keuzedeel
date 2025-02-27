@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Project } from "@/types/database";
-import { useToast } from "./ui/use-toast";
 
 interface ProjectShowcaseProps {
   limit?: number;
@@ -12,7 +10,6 @@ interface ProjectShowcaseProps {
 export const ProjectShowcase = ({ limit }: ProjectShowcaseProps) => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
-  const { toast } = useToast();
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -37,18 +34,13 @@ export const ProjectShowcase = ({ limit }: ProjectShowcaseProps) => {
         }
       } catch (error) {
         console.error('Error fetching projects:', error);
-        toast({
-          title: "Error",
-          description: "Er is een fout opgetreden bij het laden van de projecten.",
-          variant: "destructive",
-        });
       } finally {
         setLoading(false);
       }
     };
 
     fetchProjects();
-  }, [toast, limit]);
+  }, [limit]);
 
   if (loading) {
     return (
@@ -58,7 +50,7 @@ export const ProjectShowcase = ({ limit }: ProjectShowcaseProps) => {
             Uitgelichte Projecten
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
+            {[1, 2,3].map((i) => (
               <Card key={i} className="h-80 animate-pulse">
                 <div className="h-48 bg-gray-200" />
                 <div className="p-6 space-y-4">
@@ -76,11 +68,11 @@ export const ProjectShowcase = ({ limit }: ProjectShowcaseProps) => {
   return (
     <section className="py-20 bg-white">
       <div className="container px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
-          {limit ? "Uitgelichte Projecten" : "Alle Projecten"}
+        <h2 className={`text-3xl md:text-4xl font-bold text-primary text-center ${projects.length > 0 ? "mb-12" : "mb-0"}`}>
+          {projects.length > 0 ? limit ? "Uitgelichte Projecten" : "Alle Projecten" : "Geen Projecten gevonden"}
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {projects && projects.map((project) => (
             <Card
               key={project.id}
               className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"

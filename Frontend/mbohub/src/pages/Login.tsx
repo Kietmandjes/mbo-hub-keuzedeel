@@ -6,9 +6,11 @@ const Login: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { toast } = useToast();
+    const [loading, setLoading] = useState(false);
 
     const [error, setError] = useState('');
     const handleSubmit = (event: React.FormEvent) => {
+        setLoading(true);
         event.preventDefault();
         // Handle login logic here
         fetch('http://localhost:8000/api/login', {
@@ -20,6 +22,7 @@ const Login: React.FC = () => {
         })
             .then(response => response.json())
             .then(data => {
+                setLoading(false);
                 // Handle response data here
                 if(data.status !=='success'){
                     setError(data.status);
@@ -42,6 +45,12 @@ const Login: React.FC = () => {
             })
             .catch(error => {
                 console.error('Error:', error);
+                setLoading(false);
+                toast({
+                    title: "Error",
+                    description: "Er is een fout opgetreden bij het inloggen.",
+                    variant: "destructive",
+                });
             });
     };
 
@@ -74,7 +83,17 @@ const Login: React.FC = () => {
                         />
                     </label>
                     <Button type="submit" className="w-full mt-2 text-white">
-                        Login
+                         {loading ?  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                            <circle fill="#FFFFFFFF" stroke="#FFFFFFFF" stroke-width="20" r="15" cx="40" cy="100">
+                                <animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
+                            </circle>
+                            <circle fill="#FFFFFFFF" stroke="#FFFFFFFF" stroke-width="20" r="15" cx="100" cy="100">
+                                <animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
+                                </circle>
+                            <circle fill="#FFFFFFFF" stroke="#FFFFFFFF" stroke-width="20" r="15" cx="160" cy="100">
+                                <animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
+                            </circle>
+                        </svg>: 'Login'}
                     </Button>
                 </form>
             </div>
