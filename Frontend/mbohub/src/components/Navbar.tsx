@@ -15,6 +15,7 @@ export const Navbar = () => {
     // { path: "/news", label: "Nieuws" },
     { path: "/calendar", label: "Kalender" },
     { path: "/about", label: "Over Ons" },
+    { path: "/skills", label: "Skills" },
     { path: "/contact", label: "Contact" },
   ];
 
@@ -32,7 +33,7 @@ export const Navbar = () => {
                 key={item.path}
                 to={item.path} 
                 className={cn(
-                  "transition-colors",
+                  "transition-colors",     
                   isActiveLink(item.path) 
                     ? "text-primary font-semibold" 
                     : "text-gray-600 hover:text-primary"
