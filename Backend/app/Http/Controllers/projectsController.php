@@ -32,17 +32,43 @@ class projectsController extends Controller
         $projects->tag = $request->tag;
 
         $projects->save();
-        return response()->json($request);
+        return response()->json(['message' => 'Project created successfully', 'status' => 'success'], 200);
     }
 
 
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        return response()->json("edit");
+        $project = projects::find($id);
+
+        if (!$project) {
+            return response()->json(['message' => 'Project not found', 'status' => 'error'], 404);
+        }
+    
+        // Update project fields
+        $project->title = $request->title ?? $project->title;
+        $project->slug = $request->slug ?? $project->slug;
+        $project->text = $request->text ?? $project->text;
+        $project->description = $request->description ?? $project->description;
+        $project->active = $request->active ?? $project->active;
+        $project->date = $request->date ?? $project->date;
+        $project->user_id = $request->user_id ?? $project->user_id;
+        $project->tag = $request->tag ?? $project->tag;
+    
+        $project->save();
+    
+        return response()->json(['message' => 'Project updated successfully', 'status' => 'success'], 200);
     }
 
     public function delete($id)
     {
-        return response()->json("delete");
+        $project = projects::find($id);
+
+    if (!$project) {
+        return response()->json(['message' => 'Project not found', 'status'=> 'error'], 404);
+    }
+
+    $project->delete();
+
+    return response()->json(['message' => 'Project deleted successfully', 'status'=> 'succes'], 200);
     }
 }
