@@ -6,19 +6,19 @@ const Projects = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="h-[40vh] bg-primary overflow-hidden">
-        <div className="container mx-auto px-4 h-full flex items-center">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in">
-              Onze Projecten
+      <div className="h-[300px] bg-secondary overflow-hidden">
+      <div className="container relative z-10 h-full flex items-center justify-center">
+        <div className="max-w-3xl">
+        <h1 className="text-4xl md:text-5xl font-bold text-white text-center pb-2">
+        Onze Projecten
             </h1>
-            <p className="text-lg md:text-xl text-white/90 animate-fade-in-up">
+            <p className="text-lg md:text-xl text-white/90 text-center">
               Ontdek de innovatieve projecten waar MBO-studenten en bedrijven
               samen aan werken
             </p>
           </div>
         </div>
-      </section>
+      </div>
       {/* Project Showcase Section */}
       <ProjectShowcase />
       {/* CTA Section */}
