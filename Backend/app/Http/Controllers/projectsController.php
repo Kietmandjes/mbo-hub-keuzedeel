@@ -38,11 +38,11 @@ class projectsController extends Controller
 
     public function edit($id)
     {
-        return response()->json();
+        return response()->json("edit");
     }
 
     public function delete($id)
     {
-        return response()->json();
+        return response()->json("delete");
     }
 }
