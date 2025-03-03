@@ -19,4 +19,30 @@ class projectsController extends Controller
 
         return response()->json($projects);
     }
+    public function create(Request $request)
+    {
+        $projects = new projects;
+        $projects->title = $request->title;
+        $projects->slug = $request->slug;
+        $projects->text = $request->text;
+        $projects->description = $request->description;
+        $projects->active = $request->active;
+        $projects->date = $request->date;
+        $projects->user_id = $request->user_id;
+        $projects->tag = $request->tag;
+
+        $projects->save();
+        return response()->json($request);
+    }
+
+
+    public function edit($id)
+    {
+        return response()->json();
+    }
+
+    public function delete($id)
+    {
+        return response()->json();
+    }
 }

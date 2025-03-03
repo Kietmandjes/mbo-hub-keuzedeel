@@ -21,5 +21,9 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 //     // Your logic here
 //     return ['Laravel' => app()->version(),$request->all()]; 
 // });
+
 Route::get("/projects", [projectsController::class, "index"]);
 Route::get("/projects/{id}", [projectsController::class, "index"]);
+Route::post("/projects", [projectsController::class, "create"]);
+Route::put("/projects/{id}", [projectsController::class, "edit"]);
+Route::delete("/projects/{id}", [projectsController::class, "delete"]);
