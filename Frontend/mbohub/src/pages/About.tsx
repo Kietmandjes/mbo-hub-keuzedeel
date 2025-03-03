@@ -40,12 +40,29 @@ const About = () => {
     // Add more team members as needed
   ];
 
+  const informatie = [
+    {
+      titel: "Visie",
+      text: "MBO-Hub Amsterdam verbindt studenten met bedrijven en organisaties, om samen te werken aan de toekomst van onze stad tijdens het 750-jarig jubileum.",
+      meer: "Lees meer"
+    },
+    {
+      titel: "Innovatie",
+      text: "Door studenten te betrekken bij belangrijke projecten zorgen we voor nieuwe ideeën, jonge energie en een sterkere verbinding tussen onderwijs en de maatschappij.",
+      meer: "Lees meer"
+    },
+    {
+      titel: "Verbinding",
+      text: "We brengen mbo-studenten, bedrijven, de Gemeente Amsterdam en initiatieven samen om te werken aan betekenisvolle projecten voor de stad.",
+      meer: "Lees meer"
+    }
+  ];
+
   
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="relative h-[300px] bg-primary">
-        <div className="absolute inset-0 bg-black/50" />
+      <div className="relative h-[300px] bg-energetic">
         <div className="container relative z-10 h-full flex items-center justify-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white text-center">
             Over MBO-HUB Amsterdam
@@ -72,6 +89,42 @@ const About = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {teamMembers.map((member) => (
+              <Card key={member.name} className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6 text-center">
+                  <Avatar className="w-24 h-24 mx-auto mb-4">
+                    <AvatarImage className="object-cover" src={member.image} alt={member.name} />
+                    <AvatarFallback>{member.initials}</AvatarFallback>
+                  </Avatar>
+                  <h3 className="text-xl font-semibold text-primary">{member.name}</h3>
+                  <p className="text-gray-600 mt-2">{member.role}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Information Section */}
+      <section className="py-16 container">
+        <div className="max-w-3xl mx-auto space-y-12">
+          {informatie.map((info) => (
+            <div key={info.titel} className="space-y-4">
+              <h2 className="text-3xl font-bold text-primary">{info.titel}</h2>
+              <p className="text-lg text-gray-700">{info.text}</p>
+              <a href="#" className="text-secondary font-semibold hover:underline">{info.meer}</a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Development Team Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container">
+          <h2 className="text-3xl font-bold text-primary text-center mb-12">
+            Ontmoet de Developers
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {developTeam.map((member) => (
               <Card key={member.name} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
                   <Avatar className="w-24 h-24 mx-auto mb-4">

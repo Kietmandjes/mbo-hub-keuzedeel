@@ -46,9 +46,9 @@ export const Navbar = () => {
     { path: "/", label: "Home" },
     { path: "/projects", label: "Projecten" },
     // { path: "/news", label: "Nieuws" },
-    { path: "/calendar", label: "Kalender" },
     { path: "/about", label: "Over Ons" },
     { path: "/skills", label: "Skills" },
+    { path: "/calendar", label: "Kalender" },
     { path: "/contact", label: "Contact" },
   ];
 
