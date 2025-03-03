@@ -16,11 +16,3 @@ export interface Event {
   location: string;
   created_at: string;
 }
-
-export interface NewsItem {
-  id: number;
-  title: string;
-  date: string;
-  image_url: string;
-  description: string;
-}

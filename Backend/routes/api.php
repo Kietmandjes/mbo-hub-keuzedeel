@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Auth\Events\Login;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,4 @@ Route::match(['get', 'post'], '/user', function (Request $request) {
 });
 
 Route::post("/home", [ProjectController::class, "index"]);
-
+Route::post("/users", [UserController::class, "users"]);

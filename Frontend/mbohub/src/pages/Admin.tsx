@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {Table,TableBody,TableHeader} from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import type { Event, Project, NewsItem } from "@/types/database";
+import { Link } from "react-router-dom";
+import type { Event, Project } from "@/types/database";
 
 const API_BASE_URL = "https://mbo-hub.mostafanasar.com/api";
 
@@ -27,12 +29,46 @@ const Admin = () => {
     description: "",
   });
 
-  const [newsItem, setNewsItem] = useState<Partial<NewsItem>>({
-    title: "",
-    date: new Date().toISOString().split('T')[0],
-    image_url: "",
-    description: "",
-  });
+
+  const [isAdmin, setIsAdmin] = useState(false);
+
+
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const checkAdmin = () => {
+      if (document.cookie.includes('admin=true')) {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+  
+      }
+    };
+
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        setUsers(data);
+
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+
+    }
+    fetchUsers();
+    checkAdmin();
+  }, []);
 
   const handleEventSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -91,43 +127,42 @@ const Admin = () => {
     }
   };
 
-  const handleNewsSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const response = await fetch(`${API_BASE_URL}/news.php`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newsItem),
-      });
-      
-      if (response.ok) {
-        toast.success("Nieuwsitem succesvol toegevoegd!");
-        setNewsItem({
-          title: "",
-          date: new Date().toISOString().split('T')[0],
-          image_url: "",
-          description: "",
-        });
-      } else {
-        toast.error("Er is iets misgegaan bij het toevoegen van het nieuwsitem.");
-      }
-    } catch (error) {
-      toast.error("Er is een fout opgetreden bij het verbinden met de database.");
-      console.error("Error submitting news item:", error);
-    }
-  };
 
+  if(isAdmin){
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container flex flex-col gap-8 mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
-      
+      {users.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Gebruikers</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <tr>
+                  <th className="text-left">Naam</th>
+                  <th className="text-left">Email</th>
+                  {/* <th>Telefoonnummer</th> */}
+                </tr>
+              </TableHeader>
+              <TableBody>
+                {users.map((user) => (
+                  <tr className="border-b" key={user.id}>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    {/* <td>{user.phone}</td> */}
+                  </tr>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      )}
       <Tabs defaultValue="events" className="space-y-4">
         <TabsList>
           <TabsTrigger value="events">Evenementen</TabsTrigger>
           <TabsTrigger value="projects">Projecten</TabsTrigger>
-          <TabsTrigger value="news">Nieuws</TabsTrigger>
         </TabsList>
 
         <TabsContent value="events">
@@ -196,7 +231,7 @@ const Admin = () => {
                   />
                 </div>
 
-                <Button variant="default" type="submit">Evenement Toevoegen</Button>
+                <Button className="text-white" type="submit">Evenement Toevoegen</Button>
               </form>
             </CardContent>
           </Card>
@@ -228,7 +263,7 @@ const Admin = () => {
                     <SelectTrigger>
                       <SelectValue placeholder="Selecteer categorie" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent style={{backgroundColor: "white"}}>
                       <SelectItem value="Logistiek">Logistiek</SelectItem>
                       <SelectItem value="ICT">ICT</SelectItem>
                       <SelectItem value="Techniek">Techniek</SelectItem>
@@ -257,68 +292,24 @@ const Admin = () => {
                   />
                 </div>
 
-                <Button type="submit">Project Toevoegen</Button>
-              </form>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="news">
-          <Card>
-            <CardHeader>
-              <CardTitle>Voeg Nieuwsitem Toe</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleNewsSubmit} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="news-title">Titel</Label>
-                  <Input
-                    id="news-title"
-                    value={newsItem.title}
-                    onChange={(e) => setNewsItem({ ...newsItem, title: e.target.value })}
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="news-date">Datum</Label>
-                  <Input
-                    id="news-date"
-                    type="date"
-                    value={newsItem.date}
-                    onChange={(e) => setNewsItem({ ...newsItem, date: e.target.value })}
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="news-image">Afbeelding URL</Label>
-                  <Input
-                    id="news-image"
-                    value={newsItem.image_url}
-                    onChange={(e) => setNewsItem({ ...newsItem, image_url: e.target.value })}
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="news-description">Beschrijving</Label>
-                  <Textarea
-                    id="news-description"
-                    value={newsItem.description}
-                    onChange={(e) => setNewsItem({ ...newsItem, description: e.target.value })}
-                    required
-                  />
-                </div>
-
-                <Button type="submit">Nieuwsitem Toevoegen</Button>
+                <Button className="text-white" type="submit">Project Toevoegen</Button>
               </form>
             </CardContent>
           </Card>
         </TabsContent>
       </Tabs>
     </div>
+    
   );
+}else{
+  return(
+      <div className="w-full h-screen flex flex-col justify-center items-center font-bold text-xl">404 Page Not Found 
+        <p className="flex text-base font-medium items-center gap-1">Back to           <Link to="/" className="text-base font-medium text-primary flex items-center gap-2">
+        Home
+                  </Link></p>
+      </div>
+  )
+}
 };
 
 export default Admin;

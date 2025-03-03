@@ -33,6 +33,10 @@ export const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  const logOut = () => {
+    document.cookie = "admin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.href = '/login';
+  }
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
     let hamburger = document.getElementsByClassName('hamburger')[0]
@@ -42,6 +46,20 @@ export const Navbar = () => {
     
     // Add other actions you want to perform when the hamburger is clicked
   };
+
+  const [isAdmin,setIsAdmin] = useState(false);
+  useEffect(() => {
+    const checkAdmin = () => {
+      if (document.cookie.includes('admin=true')) {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+  
+      }
+    };
+
+    checkAdmin();
+  }, []);
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/projects", label: "Projecten" },
@@ -75,6 +93,9 @@ export const Navbar = () => {
                 {item.label}
               </Link>
             ))}
+            {isAdmin && (
+            <button className="text-secondary hover:text-secondary-dark transition-all" onClick={logOut}>Uitloggen</button>
+          )}
           </div>
           <div className="flex hamburger sm:hidden" onClick={() => handleMenuToggle()}>
             <div className="hamburger-slide"></div>
