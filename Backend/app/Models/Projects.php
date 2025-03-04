@@ -3,7 +3,7 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Fotos;
-class projectss extends Model
+class Projects extends Model
 {
     protected $table = 'projects';
 
