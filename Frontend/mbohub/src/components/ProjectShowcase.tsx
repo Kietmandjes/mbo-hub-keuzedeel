@@ -14,8 +14,8 @@ export const ProjectShowcase = ({ limit }: ProjectShowcaseProps) => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/home', {
-          method: 'POST',
+        const response = await fetch('http://localhost:8000/api/projects', {
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
@@ -89,7 +89,7 @@ export const ProjectShowcase = ({ limit }: ProjectShowcaseProps) => {
                   {project.date}
                 </Badge>
                 <h3 className="text-xl font-semibold mb-2 text-primary">
-                  {project.title}
+                  {project.Title}
                 </h3>
                 <p className="text-gray-600 line-clamp-3">{project.description}</p>
               </div>

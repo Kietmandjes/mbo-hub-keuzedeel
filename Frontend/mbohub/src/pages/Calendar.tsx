@@ -142,9 +142,9 @@ const Calendar = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-8 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Calendar and Filters */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-1 space-y-4">
             <Card className="animate-fade-in">
               <CardContent className="pt-6">
                 <CalendarComponent
@@ -180,7 +180,7 @@ const Calendar = () => {
           </div>
 
           {/* Events List */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-2">
             <div className="space-y-4">
               {filteredEvents.length > 0 ? (
                 filteredEvents.map((event) => (

@@ -111,7 +111,6 @@ const About = () => {
             <div key={info.titel} className="space-y-4">
               <h2 className="text-3xl font-bold text-primary">{info.titel}</h2>
               <p className="text-lg text-gray-700">{info.text}</p>
-              <a href="#" className="text-secondary font-semibold hover:underline">{info.meer}</a>
             </div>
           ))}
         </div>
