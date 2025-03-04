@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\skillsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\ProjectController;
@@ -39,7 +40,10 @@ Route::post("/projects", [projectsController::class, "create"]);
 Route::put("/projects/{id}", [projectsController::class, "edit"]);
 Route::delete("/projects/{id}", [projectsController::class, "delete"]);
 
+Route::get("/skills", [skillsController::class, "index"]);
+Route::post("/skills", [skillsController::class, "create"]);
+Route::put("/skills/{id}", [skillsController::class, "edit"]);
+Route::delete("/skills/{id}", [skillsController::class, "delete"]);
 
-Route::post("/home", [ProjectController::class, "index"]);
 Route::post("/users", [UserController::class, "users"]);
 
