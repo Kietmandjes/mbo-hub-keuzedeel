@@ -19,11 +19,6 @@ export const IntroSection = () => {
       description: "Bekijk de innovatieve projecten waar MBO-studenten en bedrijven samen aan werken.",
       link: "/projects"
     },
-    {
-      title: "Nieuws",
-      description: "Blijf op de hoogte van de laatste ontwikkelingen, succesverhalen en aankomende events.",
-      link: "/news"
-    }
   ];
 
   return (
@@ -59,7 +54,7 @@ export const IntroSection = () => {
             </p>
           </div>
         </div>
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
+        <div className="grid md:grid-cols-2 gap-8 mt-16">
           {sections.map((section, index) => (
             <Link to={section.link} key={section.title}>
               <Card 

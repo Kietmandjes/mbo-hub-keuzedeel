@@ -51,7 +51,7 @@ const Skills = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skillCategories.map((category) => (
-          <Card key={category.title} className="hover:shadow-lg transition-shadow">
+          <Card key={category.title} className="transition-shadow">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <span className="text-2xl">{category.icon}</span>

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Linkedin,Youtube, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -131,6 +131,15 @@ const Contact = () => {
                 className="text-gray-600 hover:text-primary transition-colors"
               >
                 <Instagram className="h-6 w-6" />
+              </a>
+              <a
+                href="https://www.youtube.com/@MBO-Hub"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-primary transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="h-6 w-6" />
               </a>
             </CardContent>
           </Card>
