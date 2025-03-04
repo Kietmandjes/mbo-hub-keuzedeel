@@ -2,7 +2,7 @@
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Foto;
+use App\Models\Fotos;
 class projects extends Model
 {
     protected $table = 'projects';
