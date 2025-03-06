@@ -20,7 +20,7 @@ class skillsController extends Controller
         $skills->example = $request->example;
         $skills->icon = $request->icon;
         $skills->save();
-        return response()->json(['message' => 'Skill successfull aan gemaakt', 'status' => 'success'], 200);
+        return response()->json(['message' => 'Skill succesvol aan gemaakt', 'status' => 'success'], 200);
     }
 
 
@@ -31,7 +31,6 @@ class skillsController extends Controller
         if (!$skills) {
             return response()->json(['message' => 'Skill niet gevonden', 'status' => 'error'], 404);
         }
-        $skills = new Skills;
         $skills->title = $request->title;
         $skills->description = $request->description;
         $skills->example = $request->example;
@@ -39,7 +38,7 @@ class skillsController extends Controller
     
         $skills->save();
     
-        return response()->json(['message' => 'Skill successfull geupdate', 'status' => 'success'], 200);
+        return response()->json(['message' => 'Skill succesvol geupdate', 'status' => 'success'], 200);
     }
 
     public function delete($id)
@@ -52,6 +51,6 @@ class skillsController extends Controller
 
         $skills->delete();
 
-        return response()->json(['message' => 'Skill successfull verwijderd', 'status'=> 'succes'], 200);
+        return response()->json(['message' => 'Skill succesvol verwijderd', 'status'=> 'success'], 200);
     }
 }
