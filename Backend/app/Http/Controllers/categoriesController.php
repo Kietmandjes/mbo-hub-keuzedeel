@@ -5,7 +5,7 @@ use App\Models\categories;
 
 class categoriesController extends Controller
 {
-    public function index($id = null)
+    public function index()
     {
 
         $categories = categories::all();

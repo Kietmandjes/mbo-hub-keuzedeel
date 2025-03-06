@@ -5,7 +5,7 @@ use App\Models\Types;
 
 class typesController extends Controller
 {
-    public function index($id = null)
+    public function index()
     {
         $type = Types::all();
 
