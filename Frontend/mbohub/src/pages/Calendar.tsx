@@ -135,7 +135,7 @@ const Calendar = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8 animate-fade-in">
+        <div className="text-center mb-8 animate-fade-in"> 
           <h1 className="text-4xl font-bold text-primary mb-4">Evenementenkalender</h1>
           <p className="text-lg text-gray-600">
             Bekijk en filter aankomende evenementen en activiteiten

@@ -46,10 +46,10 @@ const Skills = () => {
       <div className="h-[300px] bg-primary overflow-hidden">
         <div className="container relative z-10 h-full flex items-center justify-center">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white text-center pb-2">
+            <h1 className="text-4xl md:text-5xl font-bold text-white text-center pb-2 animate-fade-in-up">
               Onze Skills
             </h1>
-            <p className="text-lg md:text-xl text-white/90 text-center">
+            <p className="text-lg md:text-xl text-white/90 text-center animate-fade-in-up">
               Ontdek de diverse vaardigheden van onze MBO-studenten en zie hoe zij kunnen bijdragen aan jouw project.
             </p>
           </div>
