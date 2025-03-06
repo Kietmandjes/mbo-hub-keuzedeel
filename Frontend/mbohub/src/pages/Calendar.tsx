@@ -216,9 +216,7 @@ const Calendar = () => {
               ) : (
                 <Card className="animate-fade-in">
                   <CardContent className="text-center py-8">
-                    <p className="text-gray-500">
-                      Geen evenementen gevonden voor de geselecteerde filters.
-                    </p>
+                  <p onClick={() => setDate(undefined)} className="pt-2 opacity-100 transition-all cursor-pointer hover:text-primary">{date?.toLocaleDateString() ? 'Alle evenementen zien' : ''}</p>
                   </CardContent>
                 </Card>
               )}

@@ -22,19 +22,19 @@ const About = () => {
     {
       name: "Igor Herrebrugh",
       role: "Developer",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      image: "https://media.licdn.com/dms/image/v2/D4E03AQGaCDTzgvCTfQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1726526605864?e=2147483647&v=beta&t=ZL_N_Ua7gDDfaUGzK-CtGo-u4QzPRl4w6UVpQ6rin0E",
       initials: "IH"
     },
     {
       name: "Kiet Mandjes",
       role: "Developer",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
+      image: "https://media.licdn.com/dms/image/v2/D4D03AQHF669YLK7XSg/profile-displayphoto-shrink_800_800/B4DZVmB1fbG4Ak-/0/1741173515027?e=1746662400&v=beta&t=sgz9vWmIQTuERgee1iR8Ps3btdzT4Yw-66UL-giz7YU",
       initials: "KM"
     },
     {
       name: "Bilal el Koudadi",
       role: "Developer",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
+      image: "https://media.licdn.com/dms/image/v2/D5603AQEyqZfBMA1ncQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1701361169494?e=2147483647&v=beta&t=8SqICMB1XCLKWFkmCuIcmxFapvPWJkZl3td1Xh93ZMI",
       initials: "BK"
     },
     // Add more team members as needed
@@ -106,7 +106,7 @@ const About = () => {
       
       {/* Information Section */}
       <section className="py-16 container">
-        <div className="max-w-3xl mx-auto space-y-12">
+        <div className="max-w-3xl mx-auto space-y-12 text-center">
           {informatie.map((info) => (
             <div key={info.titel} className="space-y-4">
               <h2 className="text-3xl font-bold text-primary">{info.titel}</h2>
@@ -115,6 +115,7 @@ const About = () => {
           ))}
         </div>
       </section>
+      
 
       {/* Development Team Section */}
       <section className="py-16 bg-gray-50">
