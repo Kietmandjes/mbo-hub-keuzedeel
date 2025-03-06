@@ -32,7 +32,7 @@ class projectsController extends Controller
         $projects->tag = $request->tag;
 
         $projects->save();
-        return response()->json(['message' => 'Project created successfully', 'status' => 'success'], 200);
+        return response()->json(['message' => 'Project succesvol aan gemaakt', 'status' => 'success'], 200);
     }
 
 
@@ -41,7 +41,7 @@ class projectsController extends Controller
         $project = projects::find($id);
 
         if (!$project) {
-            return response()->json(['message' => 'Project not found', 'status' => 'error'], 404);
+            return response()->json(['message' => 'Project niet gevonden', 'status' => 'error'], 404);
         }
     
         // Update project fields
@@ -56,7 +56,7 @@ class projectsController extends Controller
     
         $project->save();
     
-        return response()->json(['message' => 'Project updated successfully', 'status' => 'success'], 200);
+        return response()->json(['message' => 'Project succesvol geupdate', 'status' => 'success'], 200);
     }
 
     public function delete($id)
@@ -64,11 +64,11 @@ class projectsController extends Controller
         $project = projects::find($id);
 
     if (!$project) {
-        return response()->json(['message' => 'Project not found', 'status'=> 'error'], 404);
+        return response()->json(['message' => 'Project niet gevonden', 'status'=> 'error'], 404);
     }
 
     $project->delete();
 
-    return response()->json(['message' => 'Project deleted successfully', 'status'=> 'succes'], 200);
+    return response()->json(['message' => 'Project succesvol verwijderd', 'status'=> 'success'], 200);
     }
 }
