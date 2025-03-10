@@ -10,6 +10,7 @@ class skillsController extends Controller
 
         $skills = Skills::all();
 
+
         return response()->json($skills);
     }
     public function create(Request $request)
