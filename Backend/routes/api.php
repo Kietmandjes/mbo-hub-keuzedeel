@@ -8,6 +8,7 @@ use App\Http\Controllers\projectsController;
 use Illuminate\Auth\Events\Login;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,23 +24,13 @@ use App\Http\Controllers\UserController;
 Route::post('/login',[LoginController::class,'login']);
 Route::post('/register',[LoginController::class,'register']);
 
-Route::match(['get', 'post'], '/user', function (Request $request) {
-    // Your logic here
-    return ['Laravel' => app()->version(),$request->all()]; 
-});
 
-// Route::match(['get', 'post'], '/home', function (Request $request) {
-//     // Your logic here
-//     return ['Laravel' => app()->version(),$request->all()]; 
-// });
-
-Route::get("/projects", [projectsController::class, "index"]);
-Route::get("/projects/{id}", [projectsController::class, "index"]);
-Route::post("/projects", [projectsController::class, "create"]);
+Route::post("/projects", [projectsController::class, "index"]);
+Route::post("/projects/{id}", [projectsController::class, "index"]);
+Route::post("/makeProject", [projectsController::class, "create"]);
 Route::put("/projects/{id}", [projectsController::class, "edit"]);
 Route::delete("/projects/{id}", [projectsController::class, "delete"]);
 
 
-Route::post("/home", [ProjectController::class, "index"]);
-Route::post("/users", [UserController::class, "users"]);
+Route::post("/admin", [AdminController::class, "index"]);
 

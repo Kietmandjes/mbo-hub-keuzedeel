@@ -1,20 +1,29 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;    
-use App\Models\projects;    
-use App\Models\fotos;    
-
+use App\Models\projects;  
+use App\Models\Fotos;
+use Carbon\Carbon;  
 class projectsController extends Controller
 {
-    public function index($id = null)
+    public function index(Request $request,$id = null)
     {
-
-        // $projects = projects::all();
-        $photos = fotos::all();
-        if($id == null){
-            $projects = projects::with('fotos')->get();
+        
+        if($request->cat){
+            $projects = projects::select('id', 'Title', 'slug', 'text', 'description', 'updated_at',  'tag')->where('active', 1)->where('tag',$request->cat)->get()->toArray();
+            for ($i = 0; $i < count($projects); $i++) {
+                $projects[$i]["updated_at"] = substr($projects[$i]["updated_at"], 0, 10);
+                $projects[$i]["updated_at"] = Carbon::parse($projects[$i]["updated_at"])->locale('nl')->isoFormat('D MMMM YYYY');
+            }
+        }
+        elseif ($id == null) {
+            $projects = projects::select('id', 'Title', 'slug', 'text', 'description', 'updated_at',  'tag')->where('active', 1)->get()->toArray();
+            for ($i = 0; $i < count($projects); $i++) {
+                $projects[$i]["updated_at"] = substr($projects[$i]["updated_at"], 0, 10);
+                $projects[$i]["updated_at"] = Carbon::parse($projects[$i]["updated_at"])->locale('nl')->isoFormat('D MMMM YYYY');
+            }
         } else {
-            $projects = projects::with('fotos')->find($id);
+            $projects = projects::all()->find($id);
         }
 
         return response()->json($projects);
@@ -22,14 +31,44 @@ class projectsController extends Controller
     public function create(Request $request)
     {
         $projects = new projects;
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'category' => 'required|string',
+            'description' => 'required|string',
+            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+            // Opslag van afbeeldingen als er bestanden zijn geüpload
+        if ($request->hasFile('images')) { 
+            $isFirst = true;
+            foreach ($request->file('images') as $image) {
+                $fotoDB = new Fotos();
+           
+                $lastImage = Fotos::orderBy('id', 'desc')->first();
+                $newId = $lastImage ? $lastImage->id + 1 : 1;
+                $fotoDB->primairy = $isFirst ? 1 : 0;
+                $isFirst = false;
+                $imageName = $newId . '-' . $image->getClientOriginalName();
+                $image->storeAs('public/projects', $imageName);
+                $lastProject = projects::orderBy('id', 'desc')->first();
+                $newId = $lastProject ? $lastProject->id + 1 : 1;
+                $fotoDB->name = str_replace(' ', '-', $image->getClientOriginalName());
+                $fotoDB->projectId = $newId;
+                $fotoDB->save();
+
+                
+
+            }
+        }
+
         $projects->title = $request->title;
-        $projects->slug = $request->slug;
-        $projects->text = $request->text;
-        $projects->description = $request->description;
-        $projects->active = $request->active;
-        $projects->date = $request->date;
-        $projects->user_id = $request->user_id;
-        $projects->tag = $request->tag;
+        $slug = str_replace(' ', '-', $request->title);
+        $projects->slug = $slug;
+        $projects->text = $request->description;
+        $description = strip_tags(str_replace('&nbsp;', ' ', substr($request->description, 0, 100)));
+        $projects->description = $description;
+        $projects->active = 1;
+        $projects->tag = $request->category;
 
         $projects->save();
         return response()->json(['message' => 'Project created successfully', 'status' => 'success'], 200);

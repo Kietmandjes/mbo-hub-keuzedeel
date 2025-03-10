@@ -1,0 +1,74 @@
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.3s ease-in-out;
+  }
+  
+  .scale-in {
+    animation: scaleIn 0.3s ease-in-out;
+  }
+  
+  .scale-out {
+    animation: scaleOut 0.3s ease-in-out;
+  }
+
+  .custom-scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .custom-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 0 10px 10px 0;
+  }
+
+  .custom-scroll::-webkit-scrollbar-thumb {
+    @apply bg-accent; 
+    border-radius: 10px;
+    transition: 0.35s all;
+  }
+
+  .custom-scroll::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent-dark;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scaleOut {
+    from {
+      transform: scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+  }
