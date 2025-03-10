@@ -17,15 +17,18 @@ export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    let isScrolling;
 
     const handleScroll = () => {
       const navbar = document.querySelector('nav');
-      if (window.scrollY > lastScrollY) {
-        navbar.style.opacity = '0.5';
-      } else {
-        navbar.style.opacity = '1';
-      }
+      navbar.style.opacity = '0.5';
+
       lastScrollY = window.scrollY;
+
+      clearTimeout(isScrolling);
+      isScrolling = setTimeout(() => {
+      navbar.style.opacity = '1';
+      }, 250);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -63,7 +66,6 @@ export const Navbar = () => {
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/projects", label: "Projecten" },
-    // { path: "/news", label: "Nieuws" },
     { path: "/about", label: "Over Ons" },
     { path: "/skills", label: "Skills" },
     { path: "/calendar", label: "Kalender" },
