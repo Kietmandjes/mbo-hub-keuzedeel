@@ -2,8 +2,7 @@
 
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
-class Fotos extends Model
+class events extends Model
 {
-    protected $table = "fotos";
-
+    protected $table = 'events';
 }

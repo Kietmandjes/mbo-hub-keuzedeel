@@ -1,0 +1,7 @@
+.jodit-status-bar-link{
+    display: none;
+}
+
+.hidescrollbar::-webkit-scrollbar {
+    display: none;
+}
