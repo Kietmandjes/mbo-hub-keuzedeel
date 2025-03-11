@@ -88,7 +88,7 @@ export const Navbar = () => {
                 className={cn(
                   "transition-colors",     
                   isActiveLink(item.path) 
-                    ? "text-primary font-semibold" 
+                    ? "text-primary font-semibold relative" 
                     : "text-gray-600 hover:text-primary"
                 )}
               >

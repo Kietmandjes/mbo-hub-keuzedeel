@@ -135,16 +135,16 @@ const Calendar = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8 animate-fade-in">
+        <div className="text-center mb-8 animate-fade-in"> 
           <h1 className="text-4xl font-bold text-primary mb-4">Evenementenkalender</h1>
           <p className="text-lg text-gray-600">
             Bekijk en filter aankomende evenementen en activiteiten
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-8 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Calendar and Filters */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-1 space-y-4">
             <Card className="animate-fade-in">
               <CardContent className="pt-6">
                 <CalendarComponent
@@ -180,7 +180,7 @@ const Calendar = () => {
           </div>
 
           {/* Events List */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-2">
             <div className="space-y-4">
               {filteredEvents.length > 0 ? (
                 filteredEvents.map((event) => (
@@ -216,9 +216,7 @@ const Calendar = () => {
               ) : (
                 <Card className="animate-fade-in">
                   <CardContent className="text-center py-8">
-                    <p className="text-gray-500">
-                      Geen evenementen gevonden voor de geselecteerde filters.
-                    </p>
+                  <p onClick={() => setDate(undefined)} className="pt-2 opacity-100 transition-all cursor-pointer hover:text-primary">{date?.toLocaleDateString() ? 'Alle evenementen zien' : ''}</p>
                   </CardContent>
                 </Card>
               )}

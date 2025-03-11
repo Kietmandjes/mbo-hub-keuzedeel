@@ -6,12 +6,12 @@ const Projects = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <div className="h-[300px] bg-secondary overflow-hidden">
-      <div className="container relative z-10 h-full flex items-center justify-center">
-        <div className="max-w-3xl">
-        <h1 className="text-4xl md:text-5xl font-bold text-white text-center pb-2">
-        Onze Projecten
+        <div className="container relative z-10 h-full flex items-center justify-center">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl font-bold text-white text-center pb-2 animate-fade-in-up">
+              Onze Projecten
             </h1>
-            <p className="text-lg md:text-xl text-white/90 text-center">
+            <p className="text-lg md:text-xl text-white/90 text-center animate-fade-in-up">
               Ontdek de innovatieve projecten waar MBO-studenten en bedrijven
               samen aan werken
             </p>
@@ -20,6 +20,8 @@ const Projects = () => {
       </div>
       {/* Project Showcase Section */}
       <ProjectShowcase />
+        
+
       {/* CTA Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 text-center">

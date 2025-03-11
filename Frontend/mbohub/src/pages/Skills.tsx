@@ -157,12 +157,28 @@ const Skills = () => {
   
 
   return (
-    <div className="container mx-auto px-4 py-24">
-      <div className="text-center mb-12">
+      <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <div className="h-[300px] bg-primary overflow-hidden">
+        <div className="container relative z-10 h-full flex items-center justify-center">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl font-bold text-white text-center pb-2 animate-fade-in-up">
+              Onze Skills
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 text-center animate-fade-in-up">
+              Ontdek de diverse vaardigheden van onze MBO-studenten en zie hoe zij kunnen bijdragen aan jouw project.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="text-center mb-12"> 
         <h1 className="text-4xl font-bold text-primary mb-4">Onze Skills</h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Ontdek de diverse vaardigheden van onze MBO-studenten en zie hoe zij kunnen bijdragen aan jouw project.
         </p>
+      </div> */}
+      <div className="container mx-auto px-4 py-24">
       </div>
       <button onClick={toggleCreate} className="px-4 py-2 bg-green-500 text-white rounded mb-5">create <i className="fa-solid fa-plus"></i></button>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -260,6 +276,7 @@ const Skills = () => {
           </Card>
         ))}
       </div>
+    </div>
     </div>
   );
   };

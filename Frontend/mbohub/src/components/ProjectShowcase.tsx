@@ -28,6 +28,7 @@ export const ProjectShowcase = ({ limit }: ProjectShowcaseProps) => {
         body: body,
       });
 
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -95,6 +96,7 @@ export const ProjectShowcase = ({ limit }: ProjectShowcaseProps) => {
                 />
               </div>
               <div className="p-6">
+
               <Badge 
                 onClick={() => {
                 const url = new URL(window.location.href);
