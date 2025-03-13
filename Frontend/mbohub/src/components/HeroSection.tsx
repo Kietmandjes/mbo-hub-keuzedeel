@@ -18,7 +18,7 @@ export const HeroSection = () => {
       ></div>
       <div className="container relative z-20 text-center px-4">
         <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-          Samen bouwen we aan de toekomst van Amsterdam!
+          Wij verbinden scholieren met de stad!
         </h1>
         <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-fade-in-up">
           Verbinden van talent, innovatie en ondernemerschap in het hart van Amsterdam

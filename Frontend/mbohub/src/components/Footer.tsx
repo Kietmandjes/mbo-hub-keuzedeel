@@ -22,7 +22,7 @@ export const Footer = () => {
           
           <div>
             <h3 className="text-xl font-bold mb-4">Links</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 !pl-0 !ml-0 !list-none">
               <li>
                 <Link to="/about" className="hover:text-secondary transition-colors">
                   Over Ons
