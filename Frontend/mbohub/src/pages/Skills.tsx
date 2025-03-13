@@ -172,35 +172,27 @@ const Skills = () => {
         </div>
       </div>
 
-      {/* <div className="text-center mb-12"> 
-        <h1 className="text-4xl font-bold text-primary mb-4">Onze Skills</h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Ontdek de diverse vaardigheden van onze MBO-studenten en zie hoe zij kunnen bijdragen aan jouw project.
-        </p>
-      </div> */}
-      <div className="container mx-auto px-4 py-24">
-      </div>
       <button onClick={toggleCreate} className="px-4 py-2 bg-green-500 text-white rounded mb-5">create <i className="fa-solid fa-plus"></i></button>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-14">
         {/*deze if statement moet kijken of de user wilt toevoegen en of de user is ingelogd */}
         
       {create && true && <Card>
           <form onSubmit={handleSubmit}>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <input type="text" id="icon" name="icon" value={skillData.icon} onChange={handleChange} required
-                        className="text-2xl w-10 text-center border-black border-solid border-2 rounded" />
-                      <input type="text" id="title" name="title" value={skillData.title} onChange={handleChange} required
+                      <input type="text" id="icon" name="icon" placeholder="☆" maxLength={1} value={skillData.icon} onChange={handleChange} required
+                        className="text-2xl w-10 text-center border-black boder-solid border-2 rounded" />
+                      <input type="text" id="title" placeholder="Titel" name="title" value={skillData.title} onChange={handleChange} required
                         className="text-2xl border-black border-solid border-2 rounded pl-3 w-full"/>
 
                     </CardTitle>
                     <CardDescription>
-                    <input type="text" id="description" name="description" value={skillData.description} onChange={handleChange} required
+                    <input type="text" id="description" placeholder="Beschrijving" name="description" value={skillData.description} onChange={handleChange} required
                         className=" border-black border-solid border-2 rounded pl-3 w-full"/>
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                  <textarea  id="example" name="example" value={skillData.example} onChange={handleChange} required
+                  <textarea  id="example" name="example" placeholder="Voorbeelden" value={skillData.example} onChange={handleChange} required
                         className=" border-black border-solid border-2 rounded pl-3 h-[5rem] w-full resize-none"/>
                   </CardContent>
                   <div className="p-6 pt-0 flex justify-between w-full">
